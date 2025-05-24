@@ -2,10 +2,16 @@ import streamlit as st
 import os
 
 # Must come FIRST!
-st.set_page_config("Chat PDF", layout="wide")
+# st.set_page_config("Chat PDF", layout="wide")
+st.set_page_config(page_title="📄 RAG Document Uploader", layout="wide")
 
+import os
 from ChatWithPDF.pdf_Chat import pdf_chatbot  # ✅ Import only the needed function
 from GeminiPro_main.Document_Q_A_app import *
+from RAGModel_Base.RAG_Streamlit_driver import *
+
+
+
 
 # ---------- Define App Pages ----------
 def main_dashboard():
@@ -67,10 +73,18 @@ def app_router():
         main_dashboard()
     elif page == "app1":
         pdf_chatbot()  # Call the imported function
+
     elif page == "app2":
         DocumentQAApp().run()
+
     elif page == "app3":
-        app_template(3)
+        RAGUploaderApp().run()
+        if "go_home" in st.session_state and st.session_state.go_home:
+            st.session_state.page = "main"
+            # st.rerun()
+
+        # RAGUploaderApp().run()
+
     elif page == "app4":
         app_template(4)
     elif page == "app5":

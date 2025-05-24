@@ -1,11 +1,9 @@
-# PDF Path
-pdf_path = "Dataset/human-nutrition-text.pdf"
+# from RAGModel_Base.ImportsForRag import *
 
 import os
 import requests
 import pandas as pd
 import random
-import fitz
 import fitz
 import re
 import time
@@ -58,3 +56,10 @@ import os
 # As i am using RTX 2080 i have cu118 this may defer depending on the hardware of the machine
 # pip install torch==2.1.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 device = "cuda" if torch.cuda.is_available() else "cpu"
+
+
+
+import base64
+import sys
+import streamlit as st
+from transformers import AutoTokenizer
