@@ -1,4 +1,4 @@
-from ImportsForRag import *
+from RAGModel_Base.ImportsForRag import *
 from dotenv import load_dotenv
 import os
 from pathlib import Path
@@ -130,7 +130,7 @@ class LLmSearch:
         prompt = tokenizer.apply_chat_template(dialogue_template, tokenize=False, add_generation_prompt=True)
         input_ids = tokenizer(prompt, return_tensors="pt").to(self.device)
 
-        outputs = model.generate(**input_ids, max_new_tokens=256)
+        outputs = model.generate(**input_ids, max_new_tokens=2048)
         outputs_decoded = tokenizer.decode(outputs[0])
         response = outputs_decoded.replace(prompt, '').replace('<bos>', '').replace('<eos>', '')
         return response.strip()
